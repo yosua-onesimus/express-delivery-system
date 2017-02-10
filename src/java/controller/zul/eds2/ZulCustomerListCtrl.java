@@ -13,6 +13,11 @@ import model.obj.eds2.EdsCustomer;
 public class ZulCustomerListCtrl extends ZulDefaultListCtrl {
 
     @Override
+    protected Class _getClass() {
+        return _getDefaultToCustomClass();
+    }
+
+    @Override
     protected Class _getEntity() {
         return EdsCustomer.class;
     }

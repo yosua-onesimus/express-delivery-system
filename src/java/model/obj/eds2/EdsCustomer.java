@@ -6,10 +6,12 @@ import cococare.common.CCFieldConfig.Accessible;
 import cococare.common.CCFieldConfig.Type;
 import cococare.common.CCTypeConfig;
 import cococare.database.CCEntity;
+import cococare.framework.model.obj.util.UtilCountry;
 import cococare.framework.model.obj.util.UtilProvince;
 import cococare.framework.model.obj.util.UtilRegency;
 import cococare.framework.model.obj.util.UtilSubDistrict;
 import cococare.framework.model.obj.util.UtilVillage;
+import cococare.framework.model.obj.util.UtilZipCode;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -43,6 +45,9 @@ public class EdsCustomer extends CCEntity {
     @CCFieldConfig(group = "General", tooltiptext = "RT/RW", visible = false)
     private String neighborhood;
     @ManyToOne
+    @CCFieldConfig(group = "General", tooltiptext = "Kode Pos", accessible = Accessible.MANDATORY, maxLength = 5, uniqueKey = "code", visible = false)
+    private UtilZipCode zipCode;
+    @ManyToOne
     @CCFieldConfig(group = "General", tooltiptext = "Kelurahan", accessible = Accessible.MANDATORY, maxLength = 48, uniqueKey = "name", visible = false)
     private UtilVillage village;
     @ManyToOne
@@ -54,9 +59,9 @@ public class EdsCustomer extends CCEntity {
     @ManyToOne
     @CCFieldConfig(group = "General", tooltiptext = "Propinsi", accessible = Accessible.MANDATORY, maxLength = 48, uniqueKey = "name", visible = false)
     private UtilProvince province;
-    @Column(length = 5)
-    @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, type = Type.NUMBER_ONLY, minLength = 5, visible = false)
-    private String zipCode;
+    @ManyToOne
+    @CCFieldConfig(group = "General", tooltiptext = "Negara", accessible = Accessible.MANDATORY, maxLength = 48, uniqueKey = "name", visible = false)
+    private UtilCountry country;
     @Column(length = 16)
     @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, type = Type.PHONE_NUMBER)
     private String phone;
@@ -102,6 +107,14 @@ public class EdsCustomer extends CCEntity {
         this.neighborhood = neighborhood;
     }
 
+    public UtilZipCode getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(UtilZipCode zipCode) {
+        this.zipCode = zipCode;
+    }
+
     public UtilVillage getVillage() {
         return village;
     }
@@ -134,12 +147,12 @@ public class EdsCustomer extends CCEntity {
         this.province = province;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public UtilCountry getCountry() {
+        return country;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setCountry(UtilCountry country) {
+        this.country = country;
     }
 
     public String getPhone() {

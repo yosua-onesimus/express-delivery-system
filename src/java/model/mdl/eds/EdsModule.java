@@ -2,10 +2,7 @@ package model.mdl.eds;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.database.CCHibernateModule;
-import cococare.framework.model.obj.util.UtilProvince;
-import cococare.framework.model.obj.util.UtilRegency;
-import cococare.framework.model.obj.util.UtilSubDistrict;
-import cococare.framework.model.obj.util.UtilVillage;
+import cococare.framework.model.obj.util.*;
 import java.util.Arrays;
 import java.util.List;
 import model.obj.eds.*;
@@ -29,10 +26,15 @@ public class EdsModule extends CCHibernateModule {
         return (List) Arrays.asList(
                 //Parameter
                 EdsCustomerType.class,
+                UtilCountry.class,
                 UtilProvince.class,
                 UtilRegency.class,
                 UtilSubDistrict.class,
                 UtilVillage.class,
+                UtilZipCode.class,
+                //insert here
+                EdsRegional.class,
+                //insert here
                 EdsGoodsType.class,
                 EdsVehicleType.class,
                 EdsPickUpStatus.class,
