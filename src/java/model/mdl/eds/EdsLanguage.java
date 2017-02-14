@@ -13,6 +13,8 @@ public class EdsLanguage extends CCLanguage {
 
     public static String Eds;
     // menu
+    public static String Node;
+    public static String Link;
     public static String Customer;
     public static String Sales;
     public static String Pick_Up;

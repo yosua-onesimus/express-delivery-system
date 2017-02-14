@@ -3,8 +3,10 @@ package model.obj.eds2;
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.common.CCFieldConfig;
 import cococare.common.CCFieldConfig.Accessible;
+import cococare.common.CCFieldConfig.Type;
 import cococare.common.CCTypeConfig;
 import cococare.database.CCEntity;
+import cococare.framework.model.obj.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -38,14 +40,44 @@ public class EdsNode extends CCEntity {
     @CCFieldConfig(group = "General", visible2 = false)
     private String level = NodeLevel.GATEWAY.toString();
     @ManyToOne
-    @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, maxLength = 24, uniqueKey = "name", visible = false)
+    @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, maxLength = 24, uniqueKey = "name")
     private EdsRegional regional;
     @ManyToOne
-    @CCFieldConfig(group = "General", maxLength = 24, uniqueKey = "name", visible = false)
+    @CCFieldConfig(group = "General", maxLength = 24, uniqueKey = "name")
     private EdsNode parentNode;
     @ManyToOne
-    @CCFieldConfig(group = "General", maxLength = 24, uniqueKey = "name", visible = false)
+    @CCFieldConfig(group = "General", accessible = Accessible.READONLY, maxLength = 24, uniqueKey = "name", visible = false)
     private EdsNode mainNode;
+    @Column(length = 32)
+    @CCFieldConfig(group = "Contact Person", label = "Name", accessible = Accessible.MANDATORY)
+    private String cpName;
+    @Column(length = 16)
+    @CCFieldConfig(group = "Contact Person", label = "Phone", accessible = Accessible.MANDATORY, type = Type.PHONE_NUMBER)
+    private String cpPhone;
+    @Column(length = 255)
+    @CCFieldConfig(group = "Address", accessible = Accessible.MANDATORY, maxLength = Short.MAX_VALUE, visible = false)
+    private String address;
+    @Column(length = 16)
+    @CCFieldConfig(group = "Address", tooltiptext = "RT/RW", visible = false)
+    private String neighborhood;
+    @ManyToOne
+    @CCFieldConfig(group = "Address", tooltiptext = "Kode Pos", accessible = Accessible.MANDATORY, maxLength = 5, uniqueKey = "code", visible = false)
+    private UtilZipCode zipCode;
+    @ManyToOne
+    @CCFieldConfig(group = "Address", tooltiptext = "Kelurahan", accessible = Accessible.MANDATORY, maxLength = 48, uniqueKey = "name", visible = false)
+    private UtilVillage village;
+    @ManyToOne
+    @CCFieldConfig(group = "Address", tooltiptext = "Kecamatan", accessible = Accessible.MANDATORY, maxLength = 48, uniqueKey = "name", visible = false)
+    private UtilSubDistrict subDistrict;
+    @ManyToOne
+    @CCFieldConfig(group = "Address", tooltiptext = "Kabupaten", accessible = Accessible.MANDATORY, maxLength = 48, uniqueKey = "name", visible = false)
+    private UtilRegency regency;
+    @ManyToOne
+    @CCFieldConfig(group = "Address", tooltiptext = "Propinsi", accessible = Accessible.MANDATORY, maxLength = 48, uniqueKey = "name", visible = false)
+    private UtilProvince province;
+    @ManyToOne
+    @CCFieldConfig(group = "Address", tooltiptext = "Negara", accessible = Accessible.MANDATORY, maxLength = 48, uniqueKey = "name", visible = false)
+    private UtilCountry country;
 
 //<editor-fold defaultstate="collapsed" desc=" getter-setter ">
     public String getCode() {
@@ -110,6 +142,86 @@ public class EdsNode extends CCEntity {
 
     public void setMainNode(EdsNode mainNode) {
         this.mainNode = mainNode;
+    }
+
+    public String getCpName() {
+        return cpName;
+    }
+
+    public void setCpName(String cpName) {
+        this.cpName = cpName;
+    }
+
+    public String getCpPhone() {
+        return cpPhone;
+    }
+
+    public void setCpPhone(String cpPhone) {
+        this.cpPhone = cpPhone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public UtilZipCode getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(UtilZipCode zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public UtilVillage getVillage() {
+        return village;
+    }
+
+    public void setVillage(UtilVillage village) {
+        this.village = village;
+    }
+
+    public UtilSubDistrict getSubDistrict() {
+        return subDistrict;
+    }
+
+    public void setSubDistrict(UtilSubDistrict subDistrict) {
+        this.subDistrict = subDistrict;
+    }
+
+    public UtilRegency getRegency() {
+        return regency;
+    }
+
+    public void setRegency(UtilRegency regency) {
+        this.regency = regency;
+    }
+
+    public UtilProvince getProvince() {
+        return province;
+    }
+
+    public void setProvince(UtilProvince province) {
+        this.province = province;
+    }
+
+    public UtilCountry getCountry() {
+        return country;
+    }
+
+    public void setCountry(UtilCountry country) {
+        this.country = country;
     }
 //</editor-fold>
 }

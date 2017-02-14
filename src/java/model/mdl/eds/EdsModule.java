@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import model.obj.eds.*;
 import model.obj.eds2.EdsCustomer;
+import model.obj.eds2.EdsLink;
+import model.obj.eds2.EdsNode;
 import model.obj.eds3.EdsConsignmentNotes;
 import model.obj.eds3.EdsConsignmentNotesItem;
 import model.obj.eds3.EdsPickUp;
@@ -34,9 +36,9 @@ public class EdsModule extends CCHibernateModule {
                 UtilZipCode.class,
                 //insert here
                 EdsRegional.class,
+                EdsVehicleType.class,
                 //insert here
                 EdsGoodsType.class,
-                EdsVehicleType.class,
                 EdsPickUpStatus.class,
                 EdsGoodsCategory.class,
                 EdsCommodity.class,
@@ -45,6 +47,8 @@ public class EdsModule extends CCHibernateModule {
                 EdsHandling.class,
                 EdsInsurance.class,
                 //Archive
+                EdsNode.class,
+                EdsLink.class,
                 EdsCustomer.class,
                 //Transaction
                 EdsPickUp.class,

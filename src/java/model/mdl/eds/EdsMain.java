@@ -7,6 +7,8 @@ import cococare.framework.common.CFApplUae;
 import cococare.framework.model.bo.util.UtilProvinceRegencyBo;
 import cococare.framework.zk.CFZkMain;
 import controller.zul.eds2.ZulCustomerListCtrl;
+import controller.zul.eds2.ZulLinkListCtrl;
+import controller.zul.eds2.ZulNodeListCtrl;
 import controller.zul.eds3.ZulConsignmentNotesListCtrl;
 import controller.zul.eds3.ZulPickUpListCtrl;
 import static model.mdl.eds.EdsLanguage.*;
@@ -46,6 +48,8 @@ public class EdsMain extends CFZkMain {
 
     @Override
     protected void _initInitialUaeBody(CFApplUae uae) {
+        uae.reg(Eds, Node, ZulNodeListCtrl.class);
+        uae.reg(Eds, Link, ZulLinkListCtrl.class);
         uae.reg(Eds, Customer, ZulCustomerListCtrl.class);
         uae.reg(Eds, Pick_Up, ZulPickUpListCtrl.class);
         uae.reg(Eds, Consignment_Notes, ZulConsignmentNotesListCtrl.class);
@@ -54,6 +58,8 @@ public class EdsMain extends CFZkMain {
     @Override
     protected void _applyUserConfigUaeBody(CFApplUae uae) {
         uae.addMenuParent(Archive, null, null);
+        uae.addMenuChild(Node, null, ZulNodeListCtrl.class);
+        uae.addMenuChild(Link, null, ZulLinkListCtrl.class);
         uae.addMenuChild(Customer, null, ZulCustomerListCtrl.class);
         uae.addMenuParent(Sales, null, null);
         uae.addMenuChild(Pick_Up, null, ZulPickUpListCtrl.class);
