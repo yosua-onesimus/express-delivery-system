@@ -31,15 +31,15 @@ public class ZulRouteNodeListCtrl extends ZulDefaultListCtrl {
     @Override
     protected void _initComponent() {
         super._initComponent();
-        txtNodeFrom = (CCBandbox) parameter.get(this + "txtNodeFrom");
-        txtNodeTo = (CCBandbox) parameter.get(this + "txtNodeTo");
+        txtNodeFrom = (CCBandbox) parameter.get(toString() + "txtNodeFrom");
+        txtNodeTo = (CCBandbox) parameter.get(toString() + "txtNodeTo");
     }
 
     @Override
-    protected void _initTable() {
-        super._initTable();
-        if (newEntity) {
-            System.out.println("newEntity");
+    public void doUpdateTable() {
+        super.doUpdateTable();
+        if (tblEntity.getList().isEmpty()) {
+            System.out.println("X");
         }
     }
 }

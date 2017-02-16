@@ -22,8 +22,8 @@ public class ZulPathCtrl extends ZulDefaultWithChildCtrl {
     protected void _initComponent() {
         super._initComponent();
         ZulRouteListCtrl zulRouteListCtrl = new ZulRouteListCtrl();
-        parameter.put(zulRouteListCtrl + "txtNodeFrom", txtNodeFrom);
-        parameter.put(zulRouteListCtrl + "txtNodeTo", txtNodeTo);
+        parameter.put(zulRouteListCtrl.toString() + "txtNodeFrom", txtNodeFrom);
+        parameter.put(zulRouteListCtrl.toString() + "txtNodeTo", txtNodeTo);
         _addChildScreen2(Route + "s", "path", zulRouteListCtrl);
     }
 }
