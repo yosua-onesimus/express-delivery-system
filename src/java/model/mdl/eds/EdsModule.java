@@ -6,9 +6,7 @@ import cococare.framework.model.obj.util.*;
 import java.util.Arrays;
 import java.util.List;
 import model.obj.eds.*;
-import model.obj.eds2.EdsCustomer;
-import model.obj.eds2.EdsLink;
-import model.obj.eds2.EdsNode;
+import model.obj.eds2.*;
 import model.obj.eds3.EdsConsignmentNotes;
 import model.obj.eds3.EdsConsignmentNotesItem;
 import model.obj.eds3.EdsPickUp;
@@ -49,6 +47,9 @@ public class EdsModule extends CCHibernateModule {
                 //Archive
                 EdsNode.class,
                 EdsLink.class,
+                EdsPath.class,
+                EdsRoute.class,
+                EdsRouteNode.class,
                 EdsCustomer.class,
                 //Transaction
                 EdsPickUp.class,

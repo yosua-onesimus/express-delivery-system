@@ -49,10 +49,10 @@ public class EdsNode extends CCEntity {
     @CCFieldConfig(group = "General", accessible = Accessible.READONLY, maxLength = 24, uniqueKey = "name", visible = false)
     private EdsNode mainNode;
     @Column(length = 32)
-    @CCFieldConfig(group = "Contact Person", label = "Name", accessible = Accessible.MANDATORY)
+    @CCFieldConfig(group = "Contact Person", label = "Name", accessible = Accessible.MANDATORY, visible = false)
     private String cpName;
     @Column(length = 16)
-    @CCFieldConfig(group = "Contact Person", label = "Phone", accessible = Accessible.MANDATORY, type = Type.PHONE_NUMBER)
+    @CCFieldConfig(group = "Contact Person", label = "Phone", accessible = Accessible.MANDATORY, type = Type.PHONE_NUMBER, visible = false)
     private String cpPhone;
     @Column(length = 255)
     @CCFieldConfig(group = "Address", accessible = Accessible.MANDATORY, maxLength = Short.MAX_VALUE, visible = false)

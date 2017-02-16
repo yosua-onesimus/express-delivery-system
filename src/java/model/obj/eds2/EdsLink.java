@@ -18,7 +18,7 @@ import model.obj.eds.EdsVehicleType;
  */
 @Entity
 @Table(name = "eds_links")
-@CCTypeConfig(label = "Link", uniqueKey = "@nodeFrom.name-@nodeTo.name")
+@CCTypeConfig(label = "Link", uniqueKey = "@nodeFrom.name-@nodeTo.name-@vehicleType.name")
 public class EdsLink extends CCEntity {
 
     @ManyToOne
