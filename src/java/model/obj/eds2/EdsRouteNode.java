@@ -32,6 +32,17 @@ public class EdsRouteNode extends CCEntity {
     @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, maxLength = 24, uniqueKey = "name")
     private EdsNode node;
 
+//<editor-fold defaultstate="collapsed" desc=" EdsRouteNode ">
+    public EdsRouteNode() {
+    }
+
+    public EdsRouteNode(EdsRoute route, Integer sequence, EdsNode node) {
+        this.route = route;
+        this.sequence = sequence;
+        this.node = node;
+    }
+//</editor-fold>
+
 //<editor-fold defaultstate="collapsed" desc=" getter-setter ">
     public EdsRoute getRoute() {
         return route;
