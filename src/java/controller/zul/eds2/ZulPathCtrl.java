@@ -1,9 +1,8 @@
 package controller.zul.eds2;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
-import cococare.framework.zk.controller.zul.ZulDefaultWithChildCtrl;
+import cococare.framework.zk.controller.zul.ZulDefaultCtrl;
 import cococare.zk.CCBandbox;
-import static model.mdl.eds.EdsLanguage.Route;
 //</editor-fold>
 
 /**
@@ -11,7 +10,7 @@ import static model.mdl.eds.EdsLanguage.Route;
  * @since 13.03.17
  * @version 13.03.17
  */
-public class ZulPathCtrl extends ZulDefaultWithChildCtrl {
+public class ZulPathCtrl extends ZulDefaultCtrl {
 
 //<editor-fold defaultstate="collapsed" desc=" private object ">
     private CCBandbox txtNodeFrom;
@@ -19,11 +18,16 @@ public class ZulPathCtrl extends ZulDefaultWithChildCtrl {
 //</editor-fold>
 
     @Override
+    protected Class _getClass() {
+        return ZulPathCtrl.class;
+    }
+
+    @Override
     protected void _initComponent() {
         super._initComponent();
         ZulRouteListCtrl zulRouteListCtrl = new ZulRouteListCtrl();
         parameter.put(zulRouteListCtrl.toString() + "txtNodeFrom", txtNodeFrom);
         parameter.put(zulRouteListCtrl.toString() + "txtNodeTo", txtNodeTo);
-        _addChildScreen2(Route + "s", "path", zulRouteListCtrl);
+        _addChildScreen("path", zulRouteListCtrl, "zulRouteList");
     }
 }
