@@ -29,7 +29,7 @@ public class EdsConsignmentNotesItem extends CCEntity {
     @CCFieldConfig(group = "Goods Description", accessible = Accessible.MANDATORY, sequence = "[yyMMdd]000000", unique = true)
     private String code;
     @Column(length = 255)
-    @CCFieldConfig(group = "Goods Description", accessible = Accessible.MANDATORY, maxLength = Short.MAX_VALUE)
+    @CCFieldConfig(group = "Goods Description", maxLength = Short.MAX_VALUE)
     private String description;
     @CCFieldConfig(group = "Goods Description", accessible = Accessible.MANDATORY, type = Type.DECIMAL)
     private Float quantity = 1F;
@@ -42,7 +42,7 @@ public class EdsConsignmentNotesItem extends CCEntity {
     private Float width;
     @CCFieldConfig(group = "Goods Description", accessible = Accessible.MANDATORY, type = Type.DECIMAL)
     private Float height;
-    @CCFieldConfig(group = "Goods Description", accessible = Accessible.MANDATORY, type = Type.DECIMAL)
+    @CCFieldConfig(group = "Goods Description", accessible = Accessible.MANDATORY_READONLY, type = Type.DECIMAL)
     private Float volume;
 
 //<editor-fold defaultstate="collapsed" desc=" getter-setter ">

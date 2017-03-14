@@ -48,7 +48,7 @@ public class EdsConsignmentNotes extends CCEntity {
     @CCFieldConfig(group = "Instruction", accessible = Accessible.MANDATORY, maxLength = 24, uniqueKey = "name", visible = false)
     private EdsHandling handling;
     @ManyToOne
-    @CCFieldConfig(group = "Instruction", accessible = Accessible.MANDATORY, maxLength = 24, uniqueKey = "name", visible = false)
+    @CCFieldConfig(group = "Instruction", maxLength = 24, uniqueKey = "name", visible = false)
     private EdsInsurance insurance;
 
 //<editor-fold defaultstate="collapsed" desc=" getter-setter ">

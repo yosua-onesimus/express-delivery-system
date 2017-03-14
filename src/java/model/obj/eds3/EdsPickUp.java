@@ -29,10 +29,13 @@ public class EdsPickUp extends CCEntity {
     @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, sequence = "[yyMMdd]/000", unique = true)
     private String code;
     @ManyToOne
-    @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, maxLength = 32, uniqueKey = "fullName", requestFocus = true)
+    @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName", visible = false, requestFocus = true)
+    transient private EdsCustomer shipperInfoDummy;
+    @ManyToOne
+    @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName", visible2 = false)
     private EdsCustomer shipperInfo;
     @ManyToOne
-    @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, maxLength = 32, uniqueKey = "fullName")
+    @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName")
     private EdsCustomer pickUpInfo;
     @Temporal(value = TemporalType.DATE)
     @CCFieldConfig(group = "Instruction", accessible = Accessible.MANDATORY, type = Type.DATE)
@@ -48,7 +51,7 @@ public class EdsPickUp extends CCEntity {
     @CCFieldConfig(group = "Instruction", accessible = Accessible.MANDATORY, maxLength = 24, uniqueKey = "name", visible = false)
     private EdsVehicleType vehicleType;
     @Column(length = 255)
-    @CCFieldConfig(group = "Instruction", accessible = Accessible.MANDATORY, maxLength = Short.MAX_VALUE, visible = false)
+    @CCFieldConfig(group = "Instruction", maxLength = Short.MAX_VALUE, visible = false)
     private String remark;
     @Column(length = 32)
     @CCFieldConfig(group = "Instruction", accessible = Accessible.MANDATORY)
@@ -64,6 +67,14 @@ public class EdsPickUp extends CCEntity {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public EdsCustomer getShipperInfoDummy() {
+        return shipperInfoDummy;
+    }
+
+    public void setShipperInfoDummy(EdsCustomer shipperInfoDummy) {
+        this.shipperInfoDummy = shipperInfoDummy;
     }
 
     public EdsCustomer getShipperInfo() {
