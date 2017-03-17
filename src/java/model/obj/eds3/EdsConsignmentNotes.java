@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import model.obj.eds.*;
 import model.obj.eds2.EdsCustomer;
+import model.obj.eds2.EdsNode;
 //</editor-fold>
 
 /**
@@ -30,8 +31,14 @@ public class EdsConsignmentNotes extends CCEntity {
     @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, maxLength = 32, uniqueKey = "fullName")
     private EdsCustomer shipperInfo;
     @ManyToOne
+    @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY_READONLY, maxLength = 24, uniqueKey = "name", visible = false, visible2 = false)
+    private EdsNode shipperNode;
+    @ManyToOne
     @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, maxLength = 32, uniqueKey = "fullName")
     private EdsCustomer consigneeInfo;
+    @ManyToOne
+    @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY_READONLY, maxLength = 24, uniqueKey = "name", visible = false, visible2 = false)
+    private EdsNode consigneeNode;
     @ManyToOne
     @CCFieldConfig(group = "Goods Description", accessible = Accessible.MANDATORY, maxLength = 24, uniqueKey = "name", visible = false)
     private EdsGoodsType goodsType;
@@ -68,12 +75,28 @@ public class EdsConsignmentNotes extends CCEntity {
         this.shipperInfo = shipperInfo;
     }
 
+    public EdsNode getShipperNode() {
+        return shipperNode;
+    }
+
+    public void setShipperNode(EdsNode shipperNode) {
+        this.shipperNode = shipperNode;
+    }
+
     public EdsCustomer getConsigneeInfo() {
         return consigneeInfo;
     }
 
     public void setConsigneeInfo(EdsCustomer consigneeInfo) {
         this.consigneeInfo = consigneeInfo;
+    }
+
+    public EdsNode getConsigneeNode() {
+        return consigneeNode;
+    }
+
+    public void setConsigneeNode(EdsNode consigneeNode) {
+        this.consigneeNode = consigneeNode;
     }
 
     public EdsGoodsType getGoodsType() {

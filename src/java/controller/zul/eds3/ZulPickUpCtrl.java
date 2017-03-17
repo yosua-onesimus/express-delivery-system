@@ -9,6 +9,7 @@ import static cococare.zk.CCZk.setVisible;
 import cococare.zk.CCEditor;
 import controller.misc.eds.AreaListener;
 import controller.misc.eds.PanelNewEntity;
+import model.bo.eds.EdsConnoteActivityBo;
 import model.obj.eds2.EdsCustomer;
 import model.obj.eds3.EdsPickUp;
 import org.zkoss.zk.ui.event.Event;
@@ -24,10 +25,14 @@ import org.zkoss.zul.Row;
  */
 public class ZulPickUpCtrl extends ZulDefaultCtrl {
 
+    private EdsConnoteActivityBo connoteActivityBo;
     private EdsPickUp pickUp;
     private Row rowShipperInfoDummy;
     private CCBandbox txtShipperInfoDummy;
     private CCEditor edtShipperInfo;
+    private Row rowPickUpInfoDummy;
+    private CCBandbox txtPickUpInfoDummy;
+    private CCEditor edtPickUpInfo;
 
     @Override
     protected void _initObject() {
@@ -44,6 +49,12 @@ public class ZulPickUpCtrl extends ZulDefaultCtrl {
                     edtShipperInfo = PanelNewEntity.newEditor(EdsCustomer.class, PanelNewEntity.BLANK));
             AreaListener.init(edtShipperInfo.getContainer());
         }
+        {
+            Cell cell = PanelNewEntity.newCell(rowPickUpInfoDummy);
+            PanelNewEntity.init(cell, true, "Pick Up Info",// 
+                    edtPickUpInfo = PanelNewEntity.newEditor(EdsCustomer.class, PanelNewEntity.BLANK));
+            AreaListener.init(edtPickUpInfo.getContainer());
+        }
     }
 
     @Override
@@ -55,6 +66,12 @@ public class ZulPickUpCtrl extends ZulDefaultCtrl {
                 _doTxtShipperInfoDummy();
             }
         });
+        addListener(txtPickUpInfoDummy.getBandbox(), new EventListener() {
+            @Override
+            public void onEvent(Event event) throws Exception {
+                _doTxtPickUpInfoDummy();
+            }
+        });
     }
 
     @Override
@@ -62,19 +79,25 @@ public class ZulPickUpCtrl extends ZulDefaultCtrl {
         super._doUpdateAccessible();
         if (!newEntity) {
             setVisible(false, rowShipperInfoDummy);
+            setVisible(false, rowPickUpInfoDummy);
         }
     }
 
     @Override
     protected boolean _isValueValid() {
         return super._isValueValid()//
-                && edtShipperInfo.isValueValid();
+                && edtShipperInfo.isValueValid()//
+                && edtPickUpInfo.isValueValid();
     }
 
     @Override
     protected boolean _doSaveEntity() {
         pickUp.setShipperInfo((EdsCustomer) edtShipperInfo.getValueFromEditor());
-        return super._doSaveEntity();
+        pickUp.setPickUpInfo((EdsCustomer) edtPickUpInfo.getValueFromEditor());
+        return connoteActivityBo.saveOrUpdate(
+                pickUp,
+                edtShipperInfo.getValueFromEditor(),
+                edtPickUpInfo.getValueFromEditor());
     }
 
     private void _doTxtShipperInfoDummy() {
@@ -83,15 +106,29 @@ public class ZulPickUpCtrl extends ZulDefaultCtrl {
         _doUpdateEditorShipperInfo();
     }
 
+    private void _doTxtPickUpInfoDummy() {
+        EdsCustomer pickUpInfo = txtPickUpInfoDummy.getObject();
+        pickUp.setPickUpInfo(coalesce(pickUpInfo, new EdsCustomer()));
+        _doUpdateEditorPickUpInfo();
+    }
+
     @Override
     protected void _doUpdateEditor() {
         _doUpdateEditorShipperInfo();
+        _doUpdateEditorPickUpInfo();
         super._doUpdateEditor();
     }
 
     private void _doUpdateEditorShipperInfo() {
         try {
             edtShipperInfo.setValueToEditor(pickUp.getShipperInfo());
+        } catch (Exception exception) {
+        }
+    }
+
+    private void _doUpdateEditorPickUpInfo() {
+        try {
+            edtPickUpInfo.setValueToEditor(pickUp.getPickUpInfo());
         } catch (Exception exception) {
         }
     }

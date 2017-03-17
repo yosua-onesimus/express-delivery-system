@@ -33,10 +33,13 @@ public class EdsPickUp extends CCEntity {
     transient private EdsCustomer shipperInfoDummy;
     @ManyToOne
     @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName", visible2 = false)
-    private EdsCustomer shipperInfo;
+    private EdsCustomer shipperInfo = new EdsCustomer();
+    @ManyToOne
+    @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName", visible = false)
+    transient private EdsCustomer pickUpInfoDummy;
     @ManyToOne
     @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName")
-    private EdsCustomer pickUpInfo;
+    private EdsCustomer pickUpInfo = new EdsCustomer();
     @Temporal(value = TemporalType.DATE)
     @CCFieldConfig(group = "Instruction", accessible = Accessible.MANDATORY, type = Type.DATE)
     private Date pickUpDate = new Date();
@@ -83,6 +86,14 @@ public class EdsPickUp extends CCEntity {
 
     public void setShipperInfo(EdsCustomer shipperInfo) {
         this.shipperInfo = shipperInfo;
+    }
+
+    public EdsCustomer getPickUpInfoDummy() {
+        return pickUpInfoDummy;
+    }
+
+    public void setPickUpInfoDummy(EdsCustomer pickUpInfoDummy) {
+        this.pickUpInfoDummy = pickUpInfoDummy;
     }
 
     public EdsCustomer getPickUpInfo() {
