@@ -10,4 +10,15 @@ import cococare.framework.zk.controller.zul.ZulDefaultCtrl;
  * @version 13.03.17
  */
 public class ZulConsignmentNotesCtrl extends ZulDefaultCtrl {
+
+    @Override
+    protected Class _getClass() {
+        return ZulConsignmentNotesCtrl.class;
+    }
+
+    @Override
+    protected void _initComponent() {
+        super._initComponent();
+        _addChildScreen("consignmentNotes", new ZulConsignmentNotesItemListCtrl(), "zulConsignmentNotesItemList");
+    }
 }

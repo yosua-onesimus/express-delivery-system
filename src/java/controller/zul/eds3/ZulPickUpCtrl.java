@@ -96,8 +96,8 @@ public class ZulPickUpCtrl extends ZulDefaultCtrl {
         pickUp.setPickUpInfo((EdsCustomer) edtPickUpInfo.getValueFromEditor());
         return connoteActivityBo.saveOrUpdate(
                 pickUp,
-                edtShipperInfo.getValueFromEditor(),
-                edtPickUpInfo.getValueFromEditor());
+                pickUp.getShipperInfo(),
+                pickUp.getPickUpInfo());
     }
 
     private void _doTxtShipperInfoDummy() {

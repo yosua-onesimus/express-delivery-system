@@ -7,10 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import model.obj.eds.*;
 import model.obj.eds2.*;
-import model.obj.eds3.EdsConnoteActivity;
-import model.obj.eds3.EdsConsignmentNotes;
-import model.obj.eds3.EdsConsignmentNotesItem;
-import model.obj.eds3.EdsPickUp;
+import model.obj.eds3.*;
 //</editor-fold>
 
 /**
@@ -56,6 +53,7 @@ public class EdsModule extends CCHibernateModule {
                 EdsPickUp.class,
                 EdsConsignmentNotes.class,
                 EdsConsignmentNotesItem.class,
+                EdsTimberPacking.class,
                 EdsConnoteActivity.class);
     }
 }

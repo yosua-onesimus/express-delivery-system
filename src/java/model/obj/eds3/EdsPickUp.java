@@ -29,16 +29,16 @@ public class EdsPickUp extends CCEntity {
     @CCFieldConfig(group = "General", accessible = Accessible.MANDATORY, sequence = "[yyMMdd]/000", unique = true)
     private String code;
     @ManyToOne
-    @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName", visible = false, requestFocus = true)
+    @CCFieldConfig(group = "General", label = "Shipper Info", maxLength = 32, uniqueKey = "fullName", visible = false, requestFocus = true)
     transient private EdsCustomer shipperInfoDummy;
     @ManyToOne
     @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName", visible2 = false)
     private EdsCustomer shipperInfo = new EdsCustomer();
     @ManyToOne
-    @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName", visible = false)
+    @CCFieldConfig(group = "General", label = "Pick Up Info", maxLength = 32, uniqueKey = "fullName", visible = false)
     transient private EdsCustomer pickUpInfoDummy;
     @ManyToOne
-    @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName")
+    @CCFieldConfig(group = "General", maxLength = 32, uniqueKey = "fullName", visible2 = false)
     private EdsCustomer pickUpInfo = new EdsCustomer();
     @Temporal(value = TemporalType.DATE)
     @CCFieldConfig(group = "Instruction", accessible = Accessible.MANDATORY, type = Type.DATE)
